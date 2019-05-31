@@ -1,3 +1,5 @@
+#Using POPSQL -> Connection to MySQL server
+
 CREATE TABLE crystals (
     name VARCHAR(20),
     properties VARCHAR(60),
