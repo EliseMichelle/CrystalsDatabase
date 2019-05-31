@@ -1,0 +1,76 @@
+#Python2.7
+#Set Syntax = Python
+import bs4
+from HTMLParser import HTMLParser
+from urllib2 import urlopen as uReq
+from bs4 import BeautifulSoup as soup
+ 
+my_url = 'https://www.energymuse.com/crystal-shop?p=2'
+
+#Opening up Connetion, grabbing page
+uClient = uReq(my_url)
+page_html = uClient.read()
+uClient.close()
+
+#BeautifulSoup the website saved in page_html into an HTMl parse file
+page_soup = soup(page_html, "html.parser")
+
+#See the header of the webpage
+page_soup.h1
+
+#Hidden 
+page_soup.p
+
+#Inspect the page element - Read Body of page(Where data is)
+page_soup.body.span
+
+#CREATE LOOP AFTER FIGURING OUT ONE CONTAINER
+#Div or Li that houses class containers - This grabs all the info of each item
+containers = page_soup.findAll ("div", {"class":"product-item-details"})
+
+#How many elements(crystals) did it find on the page?
+len(containers)
+
+
+#Look at the first item
+containers[0]
+
+#Use JSBeautifier to copypasta code and make it look pretty
+#BUILD THE LOOP
+#Grab name, price properties of Crystals**
+container = containers[0]
+
+#Grab name
+container.div.h2.a["title"]
+
+#Grab properties
+
+#Grab the price
+
+#Go to the the tag with important info div1 -> div 2 and title
+for container in containers:
+
+brand = container.dib.div.a.img["title"]
+
+#Grab name of item - Find a certain a tag
+title_container = container.findAll("h2", {"class": "title"})
+
+#First item
+#.text = Text only
+product_name = title_container[0].text
+
+
+
+#Removes tags
+shipping_container[0].text.strip()
+
+#Print everything
+print("shipping_container:" + shipping_container)
+
+#Write what you want to print - if there is commas 
+f.write(brand + "," + product_name)
+
+
+
+
+
